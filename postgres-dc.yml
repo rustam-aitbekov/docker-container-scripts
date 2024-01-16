@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+    postgres_db:
+        image: postgres:latest
+        container_name: postgres_db
+        restart: always
+        environment:
+          - POSTGRES_USER=simple
+          - POSTGRES_PASSWORD=simple
+          - POSTGRES_DB=postgres
+          - PGDATA="/var/lib/postgresql/data/pgdata"
+        volumes:
+          - ./data-storage:/var/lib/postgresql/data
+        ports:
+          - "5437:5432"
+
+volumes:
+  data-storage:
+
+networks:
+  default:
+    driver: bridge
