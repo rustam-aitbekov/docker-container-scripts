@@ -33,6 +33,8 @@ services:
     volumes:
       - "graylog-datanode:/var/lib/graylog-datanode"
     restart: "on-failure"
+    security_opt:
+      - seccomp:unconfined
 
   graylog:
     container_name: gl_graylog
